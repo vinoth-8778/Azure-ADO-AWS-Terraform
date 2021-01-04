@@ -1,15 +1,15 @@
 # Terraform state will be stored in S3
 terraform {
   backend "s3" {
-    bucket = "ado-terraform-bucket"
+    bucket = "ado-aws-terraform"
     key    = "terraform.tfstate"
-    region = "ap-south-1"
+    region = "ap-southeast-1"
   }
 }
 
 # Use AWS Terraform provider
 provider "aws" {
-  region = "ap-south-1"
+  region = "ap-southeast-1"
 }
 
 # Create EC2 instance
@@ -40,6 +40,13 @@ resource "aws_security_group" "default" {
   ingress {
     from_port   = 22
     to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  
+  ingress {
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
