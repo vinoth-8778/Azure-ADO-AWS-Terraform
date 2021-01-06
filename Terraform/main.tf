@@ -22,7 +22,7 @@ resource "aws_instance" "default" {
   instance_type          = var.instance_type
 
   tags = {
-    Name = "terraform-default-3"
+    Name = "terraform-NGINX-1"
   }
 }
 
