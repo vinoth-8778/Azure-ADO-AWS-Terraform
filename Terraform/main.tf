@@ -3,13 +3,13 @@ terraform {
   backend "s3" {
     bucket = "ado-aws-terraform"
     key    = "terraform.tfstate"
-    region = "ap-southeast-1"
+    region = "ap-south-1"
   }
 }
 
 # Use AWS Terraform provider
 provider "aws" {
-  region = "ap-southeast-1"
+  region = "ap-south-1"
 }
 
 # Create EC2 instance
@@ -22,7 +22,7 @@ resource "aws_instance" "default" {
   instance_type          = var.instance_type
 
   tags = {
-    Name = "terraform-NGINX-2"
+    Name  = "Terraform-${count.index + 1}"
   }
 }
 
